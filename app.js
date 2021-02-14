@@ -62,6 +62,7 @@ searchInput.addEventListener("keypress", function(event) {
     } 
    
 });
+
 var timer
 const createSlider = () => {
   // check slider image length
@@ -83,7 +84,7 @@ const createSlider = () => {
   // hide image aria
   imagesArea.style.display = 'none';
   const duration = document.getElementById('duration').value || 1000;
-  
+  document.getElementById('duration').value = "";
   sliders.forEach(slide => {
     let item = document.createElement('div')
     item.className = "slider-item";
@@ -99,7 +100,14 @@ const createSlider = () => {
   }, 2000);
   
 }
-
+var durationInput = document.getElementById("duration");
+var durationButton = document.getElementById("create-slider");
+durationInput.addEventListener("keypress", function(event) {
+    if (event.key == 'Enter') {
+      durationButton.click();
+    } 
+   
+});
 // change slider index 
 const changeItem = index => {
   changeSlide(slideIndex += index);
